@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<f:view xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+       
+        <title>mapppp </title>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta charset="utf-8"/>
+        <style>
+            #map{
+                height: 400px;
+                width: 100%;
+            }
+
+        </style>
+    </h:head>
+      <ui:composition template="../template.xhtml">
+    <h:body>
+
+        <h3>My Google Maps Demo</h3>
+        <div id="map"></div>
+        
+        <h1> hello lets trace your location </h1>
+        <p:commandButton onclick="getLocation()" value="Get location" />
+        <div id="output"></div>
+        <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script>
+            var x = document.getElementById("output");
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+
+                } else {
+                    x.innerHTML = "oupss makaynche mdrr";
+                }
+
+            }
+            function showPosition(position) {
+                x.innerHTML = "lat=" + position.coords.latitude;
+                x.innerHTML += "<br/>";
+                x.innerHTML += " long=" + position.coords.longitude;
+            }
+            function initMap() {
+                var location = {lat: 31.660643500000003, lng: -8.0103256};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: location
+                });
+            }
+        </script>
+        <script async="true" defer="true" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD314skkY1o4BKj9JkcZs-4veX3p-kqw4U&amp;callback=initMap" >
+        </script>
+    </h:body>
+      </ui:composition>
+
+</f:view>

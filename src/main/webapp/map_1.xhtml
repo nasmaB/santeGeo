@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<f:view xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>mapppp </title>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta charset="utf-8"/>
+        <title>My map</title>
+        <link rel='stylesheet' type='text/css' href='../resources/app2/sdk/map.css'/>
+        <script src='../resources/app2/sdk/tomtom.min.js'></script>
+    </h:head>
+
+    <h:body>
+        <div id='map' style='height:500px;width:500px'></div>
+        <script> 
+            tomtom.L.map('map', {
+            key: 'xLM0cV3q0qn9uPGAG4w3PO6QhSWwYajB'
+        });
+        </script>
+    </h:body>
+
+
+</f:view>

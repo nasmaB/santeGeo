@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<f:view xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <!-- css -->
+        <link href="../resources/app2/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../resources/app2/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="../resources/app2/plugins/cubeportfolio/css/cubeportfolio.min.css"/>
+        <link href="../resources/app2/css/nivo-lightbox.css" rel="stylesheet" />
+        <link href="../resources/app2/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+        <link href="../resources/app2/css/owl.carousel.css" rel="stylesheet" media="screen" />
+        <link href="../resources/app2/css/owl.theme.css" rel="stylesheet" media="screen" />
+        <link href="../resources/app2/css/animate.css" rel="stylesheet" />
+        <link href="../resources/app2/css/style.css" rel="stylesheet"/>
+
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../resources/app2/css/bootstrap.min.css"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../resources/app2/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../resources/app2/css/util.css"/>
+        <link rel="stylesheet" type="text/css" href="../resources/app2/css/main.css"/>
+        <!--===============================================================================================-->
+
+        <!-- boxed bg -->
+        <link id="bodybg" href="../resources/app2/bodybg/bg1.css" rel="stylesheet" type="text/css" />
+        <!-- template skin -->
+        <link id="t-colors" href="../resources/app2/color/default.css" rel="stylesheet"/>
+
+
+
+    </h:head>
+
+    <h:body>
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+            <div class="top-area">
+                <div class="container">
+                    <div class="w3l-social">
+                        <ul>
+                            <li>
+                                <a href="#" class="fa fa-facebook"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-twitter"></a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-google-plus"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="right-p">
+                        <ul>
+                            <li>
+                                <span class="fa fa-phone" aria-hidden="true"></span>098-765-4321</li>
+                            <!--                                <li>
+                                                                <span class="fa fa-clock-o" aria-hidden="true"></span>( Mon-Fri 9am - 8pm ) ( Sat-Sun 10am - 6pm )</li>-->
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="container navigation">
+                <div class="navbar-header page-scroll logo-w3layouts" style="padding-top: 1%;">
+                    <h1 >
+                        <a>
+                            <span style="color: #36802d">G</span>eo
+                            <span style="color: #36802d">S</span>ante</a>
+                    </h1>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="../index.jsf">Home</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+        <section id="introConnexion" class="introConnexion">
+            <div class="introConnexion-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12" style="padding-top: 4%;">
+
+                            <div class="well well-trans">
+                                <div class="wow fadeIn" data-wow-delay="0.1s">
+                                    <h:form  class="login100-form validate-form p-l-180 p-r-180 p-t-50 p-b-40">
+                                        <div class="wrap-input100 validate-input m-b-16 " data-validate="CIN">
+                                            <b:inputText class="input100" type="text" name="cin" placeholder="CIN" value="#{userConnexionController.respo.cin}"  />
+                                            <span class="focus-input100"></span>
+                                        </div>
+
+                                        <div class="wrap-input100 validate-input" data-validate = "Nom">
+                                            <b:inputText class="input100" type="text" name="nom" placeholder="nom" value="#{userConnexionController.respo.nom}" />
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                        <div class="wrap-input100 validate-input" data-validate = "Prenom">
+                                            <b:inputText class="input100" type="text" name="prenom" placeholder="Prenom" value="#{userConnexionController.respo.prenom}" />
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                        <div class="wrap-input100 validate-input" data-validate = "Mail">
+                                            <b:inputText class="input100" type="text" name="mail" placeholder="Mail" value="#{userConnexionController.respo.mail}" />
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                        <div class="wrap-input100 validate-input" data-validate = "Numero de telephone">
+                                            <b:inputText class="input100" type="text" name="tel" placeholder="tel" value="#{userConnexionController.respo.tel}" />
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                        <div class="wrap-input100 validate-input" data-validate = "Login">
+                                            <b:inputText class="input100" type="text" name="login" placeholder="Login" value="#{userConnexionController.selected.login}" />
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                        <div class="wrap-input100 validate-input" data-validate = "Password">
+                                            <b:inputText class="input100" type="text" name="password" placeholder="Password" value="#{userConnexionController.selected.mdp}" />
+                                            <span class="focus-input100"></span>
+                                        </div>
+                                       
+                                        <div class="container-login100-form-btn">
+                                            <b:commandButton class="login100-form-btn" value="Sign in" action="#{userConnexionController.registerAccount()}" />
+                                                Sign in
+                                            
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                           
+
+                                        </div>
+
+
+                                    </h:form>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </h:body>
+
+
+</f:view>

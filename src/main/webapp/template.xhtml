@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:head>
+
+        <meta charset="UTF-8"/>
+        <title>AdminLTE 2 | Dashboard</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
+        <!-- Bootstrap 3.3.2 -->
+        <link rel="stylesheet" href="../resources/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../resources/css/font-awesome.css"/>
+        <link rel="stylesheet" href="../resources/css/ionicons.min.css"/>
+        <link rel="stylesheet" href="../resources/css/AdminLTE.min.css"/>
+        <link rel="stylesheet" href="../resources/css/skin-blue.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+      
+
+    </h:head>
+    <h:body  class="skin-blue">
+        <p:growl id="growl" life="3000"/>
+        <div class="wrapper">
+            <header class="main-header" >
+                <!-- Logo -->
+                <a style="height: 88px;" class="logo" href="../index.xhtml">
+                    <p:graphicImage value="/resources/photo/appsante.jpg"  style="width: 90px;" />
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav style="height: 88px;" class="navbar navbar-static-top" role="navigation">
+                    <h:form>
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown user user-menu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="width:180px;height: 88px;">
+                                        <p:graphicImage value="" id="image"  height="70px" width="70px" class="img-circle" />
+                                        <span class="hidden-xs"> nas&nbsp;</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <!-- User image -->
+                                        <li class="user-header">
+                                            <p:graphicImage url="../resources/photo/user.jpg"  class="img-circle"/>
+                                            <p>
+                                                <small>Member depuis </small>
+                                            </p>
+                                        </li>
+                                        <!-- Menu Footer-->
+                                        <li class="user-footer">
+                                            <div class="pull-left" id="ProfileAdmin">
+                                                <p:commandButton icon="ui-icon-person" value="Profil" action="/membreLabo/Profile_admin.xhtml"/>
+                                            </div>
+                                            <div class="pull-right" >
+                                                <p:commandButton icon="ui-icon-power"   value="Sign out" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </h:form>
+                </nav>
+            </header>
+            <aside class="main-sidebar" >
+                <section class="sidebar" >
+                    <style>
+                        .sidebar,main-sidebar{
+                            color: #00a65a;
+                            background-color: #00a65a;
+                        }
+                        .animationStyle{
+                            animation-name: agendaAnimaatin;
+                            animation-duration: 6s;
+                            animation-iteration-count: 1;
+                        }
+                        @keyframes agendaAnimaatin {
+                            0%   {opacity: 0;}
+                            10%   {opacity: 0;}
+                            20%   {opacity: 0;}
+                            30%   {opacity: 0.3;}
+                            40%   {opacity: 0.4;}
+                            50%   {opacity: 0.5;}
+                            60%   {opacity: 0.6;}
+                            70%   {opacity: 0.7;}
+                            80%   {opacity: 0.8;}
+                            90%   {opacity: 0.9;}
+                            100%   {opacity: 1;}
+                        }
+                    </style>
+
+                    <!--Admin Menu--> 
+                    <h:form >
+                        <ul class="sidebar-menu animationStyle">
+                            <li class="header">MAIN NAVIGATION</li>
+                            <li class="treeview" id="GestionSecAdmin">
+                                <a href="#">
+                                    <i class="fa fa-search"></i> <span>Recherche d'un établissement de santé </span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href=""><i class="fa fa-hospital-o"></i>Hopital</a></li>
+                                    <li><a href=""><i class="fa fa-flask"></i>Laboratoire </a></li>
+                                    <li><a href=""><i class="fa fa-medrt"></i>Pharmacie </a></li>
+                                    <li><a href=""><i class="fa fa-user-md"></i>Cabinet medical</a></li>
+                                </ul>
+                            </li>
+                       <li >
+                                <a href="../tracabilite/List.xhtml">
+                                    <i class="fa fa-table"></i> <span>Historique des actions </span>
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </h:form>
+                </section>
+
+            </aside>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <div class="content-wrapper" style="min-height: 574px;padding-left: 3%;padding-top: 3%;" >
+                <ui:insert name="body" >
+
+                </ui:insert>
+            </div>
+        </div>
+        <script>
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+        <script src="../resources/js/bootstrap.min.js" />  
+        <script src="../resources/js/bootstrap3-wysihtml5.all.min.js" />
+        <script src="../resources/js/fastclick.min.js" />
+        <script src="../resources/js/app.min.js" />
+        <script src="../resources/js/dashboard.js" />
+        <script src="../resources/js/demo.js" />
+        <script>
+            function acces() {
+                var fct = "";
+                if (fct === 'admin') {
+                    document.getElementById('ProfileMembre').style.display = 'none';
+                } else if (fct === 'membre') {
+                    document.getElementById('ProfileAdmin').style.display = 'none';
+                }
+            }
+        </script>
+    </h:body>
+</html>

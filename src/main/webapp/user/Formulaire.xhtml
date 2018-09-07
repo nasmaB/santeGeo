@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:ng="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:prime="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui">
+    <ui:composition template="../template.xhtml">
+        <h:head>
+            <title>Facelet Title</title>
+            <meta charset="utf-8" />
+            <link rel="stylesheet" type="text/css" href="../resources/css/styleF.css"></link>
+            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+            <script type="text/javascript" language="javascript" src="../resources/js/jquery.js"></script>
+            <script type="text/javascript" language="javascript" src="../resources/js/script.js"></script>
+        </h:head>
+        <ui:define name="body">
+            hanii bla bla bla
+
+            <section id="banner" class="banner">
+                <div class="bg-color">
+                    <div class="container">
+                        <div class="row">
+                            <div class="login-wrap">
+                                <div class="login-html">
+
+                                    <h:form id="refistration">
+                                        <div class="group">
+                                            <br></br>
+                                            <label id="lb1">Vous avez déja un compte ?</label>
+                                            <a  id="lb2"> <p:link value="Connexion"/> </a>
+
+                                        </div>
+                                        <div class="group">
+                                            <br></br>
+                                            <label id="lb">Créer un compte</label>
+                                        </div>
+                                        <div class="group">
+                                            <br></br>
+                                            <label class="cl">CIN</label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:inputText type="text" class="form_text" id="form_cin" value="#{userController.selected.cin}" required="true"/>
+
+                                        </div>
+                                        <div class="group">
+                                            <br></br>
+                                            <label class="cl">Nom</label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:inputText type="text" class="form_text" id="form_name" value="#{userController.selected.nom}" required="true"/>
+
+                                        </div>
+                                        <div class="group">
+                                            <br></br>
+                                            <label class="cl">Prenom</label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p:inputText type="text" class="form_text" id="form_prenom" value="#{userController.selected.prenom}" required="true"/>               
+
+                                        </div>
+                                        <div class="group">
+                                            <br></br>
+                                            <label class="cl">Email</label> 
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p:inputText type="text" class="form_text" id="MailClient" value="#{userController.selected.mail}" placeholder="ex:user@hotmail.com " 
+                                                                                                                                                                            required="true" >
+                                                <p:ajax event="change" process="MailClient"  update="erreurr"/>
+                                                <f:validateRegex
+                                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                            </p:inputText>
+                                            
+                                        </div>
+                                        <div class="group">
+
+                                            <p:outputLabel style="color: red;" id="erreurr" value="" />
+
+                                        </div>
+                                        <div class="group">
+                                            <br></br>
+                                            <label class="cl">N° Télephone</label>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <p:inputMask id="phone"  value="#{userController.selected.tel}" mask=" 99 99 99 99 99" required="true"/>
+
+                                        </div>
+                                        <div class="group">
+                                            <br></br>
+                                            <label class="cl">Date de naissance</label>
+                                            <p:inputMask id="date" value="" mask="9999-99-99" required="true"/>
+
+                                        </div>
+                                     <div class="group">
+                                            <br></br>
+                                            <br></br>
+                                            <p:commandButton   id="bt1"    value="Envoyer la demande." ></p:commandButton> 
+                                        </div>
+                                        hanijds fkjdshfislkdjfpom
+                                    </h:form>
+                                    <div class="hr"></div>
+                                    <div class="foot-lnk">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </ui:define>
+    </ui:composition>
+</f:view>
+
