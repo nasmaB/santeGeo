@@ -64,6 +64,9 @@ public class Quartier implements Serializable {
         this.rues = rues;
     }
 
+    public Quartier() {
+    }
+    
     public Quartier(Long id, String libelle, Ville ville, List<Rue> rues) {
         this.id = id;
         this.libelle = libelle;
@@ -93,7 +96,7 @@ public class Quartier implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.demo.bean.Quartier[ id=" + id + " ]";
+        return  libelle ;
     }
     
 }

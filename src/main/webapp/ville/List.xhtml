@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="Espace de creation"></h:outputText>
+        </ui:define>
+        <h:head>
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+             <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link> 
+             <link rel="stylesheet" href="../resources/css/styleT.css"/>
+        </h:head>
+
+        <ui:define name="body">
+            <br/><br/><br/>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-9">
+                   
+                    <b:tabView id="tab">
+
+                        <b:tab title="Villes" > 
+                            <center>
+                                <p:fieldset class="space1" >
+                                    <div class="row" >  
+                                        <br/><br/>
+                                        
+                                        <div class="col-sm-1"> </div>
+                                        <div class="col-sm-3">
+                                            <h:form id="VilleCreateForm">
+                                                <p:panel>
+                                                    <p:outputLabel value="Ville : " for="idVille" /><br/>
+                                                    <p:inputText id="idVille" value="#{villeController.selected.libelle}" title="Libelle" /><br/>
+                                                    <b:commandButton id="save"  value="Save" ajax="true" action="#{villeController.createVille()}" update=":tab:VilleListForm:datalist"/>
+                              
+                                                </p:panel>
+                                            </h:form>    
+                                        </div>
+                                        <div class="col-sm-1"> </div>
+                                        <div class="col-sm-6">
+                                            <h:form id="VilleListForm">
+                                                <p:dataTable id="datalist" value="#{villeController.items}" var="item"
+                                                             selectionMode="single" selection="#{villeController.selected}"
+                                                             rowKey="#{item.id}" 
+                                                             >
+
+                                                   
+
+                                                    <p:column >
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Villes" style="color:green; font-family:monotype corsiva; font-size:40px; "/>
+                                                        </f:facet>
+                                                        <h3><center><h:outputText value="#{item.libelle}"/></center></h3>
+                                                    </p:column>
+                                                    <f:facet name="footer">
+                                                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Delete" actionListener="#{villeController.destroy()}"  />
+                                                    </f:facet>
+                                                </p:dataTable>
+                                                <br/><br/><br/><br/>
+                                            </h:form>
+                                        </div>
+                                        </div>
+                                    
+                                </p:fieldset>
+                            </center>   
+                        </b:tab> 
+
+                        <b:tab title="Quartiers">
+                            <center>
+                                <p:fieldset class="space1">
+                                    <div class="row" >
+                                        <br/><br/>
+                                        <div class="col-sm-1"> </div>
+                                        <div class="col-sm-3">   
+                                            <h:form id="QuartierCreateForm">
+                                                <p:panel>
+                                                    <p:outputLabel value="Creation des quartiers" for="ville" />
+                                                    <h:selectOneMenu id="ville" value="#{quartierController.selected.ville}" class="form-control"  >
+                                                        <f:selectItem itemLabel="--SELECT--" itemValue="#{null}"/>
+                                                        <f:selectItems value="#{villeController.items}"
+                                                                       var="villeItem"
+                                                                       itemValue="#{villeItem}"/>
+                                                    </h:selectOneMenu><br/>
+                                                    <p:outputLabel value="Saisissez un Quartier :" for="idQuartier" />
+                                                    <p:inputText id="idQuartier" value="#{quartierController.selected.libelle}" title="Libelle" class="form-control" /><br/> 
+                                                    <center><b:commandButton action="#{quartierController.createQuartier()}" value="save" update=":tab:QuartierListForm:datalist" /></center>
+                                                </p:panel>
+                                            </h:form>
+                                        </div>
+                                        <div class="col-sm-1"> </div>
+                                        <div class="col-sm-6">
+                                            <h:form id="QuartierListForm">
+                                                <p:dataTable id="datalist" value="#{quartierController.items}" var="item"
+                                                             selectionMode="single" selection="#{quartierController.selected}"
+                                                             rowKey="#{item.libelle}"
+                                                             >
+
+                                                    
+
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Villes" style="color:green; font-family:monotype corsiva; font-size:40px;"/>
+                                                        </f:facet>
+                                                        <h3><center><h:outputText value="#{item.ville.libelle}"/></center></h3>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Quartier" style="color:green; font-family:monotype corsiva; font-size:40px;"/>
+                                                        </f:facet>
+                                                        <h3><center><h:outputText value="#{item.libelle}"/></center></h3>
+                                                    </p:column>
+                                                    <f:facet name="footer">
+                                                        <p:commandButton id="deleteButton" icon="ui-icon-trash" value="Delete" actionListener="#{quartierController.destroy()}" disabled="#{empty quartierController.selected}"/>
+                                                    </f:facet>
+                                                </p:dataTable>
+                                                <br/><br/><br/><br/>
+                                            </h:form>
+                                        </div>    
+                                    </div>
+                                </p:fieldset>
+                            </center>
+                        </b:tab> 
+                    
+                        <b:tab title="Rues">
+                            <center>
+                                <p:fieldset class="space1">
+                                    <div class="row" >
+                                        <br/><br/>
+                                        <div class="col-sm-1"> </div>
+                                        <div class="col-sm-3">   
+                                            <h:form id="RueCreateForm">
+                                                <p:panel>
+                                                    <p:outputLabel value="Saisissez une ville" for="ville" />
+                                                    <h:selectOneMenu id="ville" value="#{rueController.villeForCreate}" class="form-control" >
+                                                        <f:selectItem itemLabel="--SELECT--" itemValue="#{null}"/>
+                                                        <f:selectItems value="#{villeController.items}"
+                                                                       var="villeItem"
+                                                                       itemValue="#{villeItem}"/>
+                                                        <p:ajax process="ville"  listener="#{rueController.findByVille()}" update="quartier" />
+                                                    </h:selectOneMenu><br/>
+                                                    <p:outputLabel value="Saisissez un quartier" for="quartier" />
+                                                    <h:selectOneMenu id="quartier" value="#{rueController.selected.quartier}" class="form-control" >
+                                                        <f:selectItem itemLabel="--SELECT--" itemValue="#{null}"/>
+                                                        <f:selectItems id="quartiers" value="#{rueController.quartiers}"
+                                                                       var="quartierItem"
+                                                                       itemValue="#{quartierItem}"/>
+                                                    </h:selectOneMenu><br/>
+                                                    <p:outputLabel value="Saisissez le nom de la rue:" for="rue" />
+                                                    <p:inputText id="rue" value="#{rueController.selected.libelle}" title="Libelle" class="form-control" /><br/> 
+                                                    <center><b:commandButton action="#{rueController.create()}" value="save"/></center>
+                                                </p:panel>
+                                            </h:form>
+                                        </div>
+                                        <div class="col-sm-1"> </div>
+                                        <div class="col-sm-6">
+                                            <h:form id="RueListForm">
+                                                <p:dataTable id="datalist" value="#{rueController.items}" var="item"
+                                                             selectionMode="single" selection="#{rueController.selected}"
+                                                             rowKey="#{item.libelle}"
+                                                             >
+
+                                                    
+
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Ville" style="color:green; font-family:monotype corsiva; font-size:40px;"/>
+                                                        </f:facet>
+                                                        <h3><center><h:outputText value="#{item.quartier.ville.libelle}"/></center></h3>
+                                                    </p:column>
+                                                    <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Quartier" style="color:green; font-family:monotype corsiva; font-size:40px;"/>
+                                                        </f:facet>
+                                                        <h3><center><h:outputText value="#{item.quartier.libelle}"/></center></h3>
+                                                    </p:column>
+                                                     <p:column>
+                                                        <f:facet name="header">
+                                                            <h:outputText value="Rue" style="color:green; font-family:monotype corsiva; font-size:40px;"/>
+                                                        </f:facet>
+                                                         <h3><center><h:outputText value="#{item.libelle}"/></center></h3>
+                                                    </p:column>
+                                                    <f:facet name="footer">
+                                                        <p:commandButton id="deleteButton" icon="ui-icon-trash" value="Delete" actionListener="#{quartierController.destroy()}" disabled="#{empty quartierController.selected}"/>
+                                                    </f:facet>
+                                                </p:dataTable>
+                                                <br/><br/><br/><br/>
+                                            </h:form>
+                                        </div>    
+                                    </div>
+                                </p:fieldset>
+                            </center>
+                        </b:tab> 
+
+                    </b:tabView> 
+                    
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+
+
+
+
+        </ui:define>
+    </ui:composition>
+
+</f:view>

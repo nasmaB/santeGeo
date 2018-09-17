@@ -49,6 +49,9 @@ public class Ville implements Serializable {
     public void setQuartiers(List<Quartier> quartiers) {
         this.quartiers = quartiers;
     }
+
+    public Ville() {
+    }
      
     @Override
     public int hashCode() {
@@ -72,7 +75,7 @@ public class Ville implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.demo.bean.Ville[ id=" + id + " ]";
+        return   libelle ;
     }
     
 }

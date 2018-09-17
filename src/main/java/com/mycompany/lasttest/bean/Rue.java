@@ -69,6 +69,9 @@ public class Rue implements Serializable {
         this.libelle = libelle;
         this.etablissements = etablissements;
     }
+
+    public Rue() {
+    }
      
     @Override
     public int hashCode() {
